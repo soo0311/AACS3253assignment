@@ -1,0 +1,6 @@
+customhost = "airasiadb.cvgpn3fwgf5n.us-east-1.rds.amazonaws.com"
+customuser = "airasiaDB"
+custompass = "airasia123"
+customdb = "airasiaDB"
+custombucket = "elasticbeanstalk-us-east-1-058665225113"
+customregion = "us-east-1a"
