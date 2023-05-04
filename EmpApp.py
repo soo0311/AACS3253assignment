@@ -4,7 +4,7 @@ import os
 import boto3
 from config import *
 
-app = Flask(__client_name__)
+app = Flask(__name__)
 
 bucket = custombucket
 region = customregion
@@ -48,9 +48,9 @@ def index():
 
         cursor.execute(insert_sql, (client_name, origin, departure, date))
         db_conn.commit()
-        client_name = client_name
+        name = client_name
         # Uplaod image file in S3 #
-        emp_image_file_name_in_s3 = "emp-id-" + str(client_name) + "_image_file"
+        emp_image_file_name_in_s3 = "emp-id-" + str(name) + "_image_file"
         s3 = boto3.resource('s3')
 
         try:
@@ -79,5 +79,5 @@ def index():
     return render_template('AddEmpOutput.html', name=client_name)
 
 
-if __client_name__ == '__main__':
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
