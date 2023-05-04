@@ -4,7 +4,7 @@ import os
 import boto3
 from config import *
 
-app = Flask(__name__)
+app = Flask(__client_name__)
 
 bucket = custombucket
 region = customregion
@@ -23,7 +23,7 @@ table = 'booking'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('AddEmp.html')
+    return render_template('index.html')
 
 
 @app.route("/about", methods=['POST'])
@@ -31,8 +31,8 @@ def about():
     return render_template('www.intellipaat.com')
 
 
-@app.route("/addemp", methods=['POST'])
-def AddEmp():
+@app.route("/index", methods=['POST'])
+def index():
     client_name = request.form['client_name']
     origin = request.form['origin']
     departure = request.form['departure']
@@ -79,5 +79,5 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=client_name)
 
 
-if __name__ == '__main__':
+if __client_name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
